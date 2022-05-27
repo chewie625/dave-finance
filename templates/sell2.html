@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="ticker" type="text" required>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="No. of Shares?" type="number" min="1" required>
+        </div>
+        <button class="btn btn-primary" type="submit">SELL</button>
+    </form>
+        <div>
+            {% if balance  %}
+            <table class="center">
+                <tr>
+                    <th scope="col">balance</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total (price x Quantity)</th>
+                </tr>
+                <tr>
+                    <td>{{balance | usd}}</td>
+                    <td>{{name}}</td>
+                    <td>{{price | usd}}</td>
+                    <td>{{quantity}}</td>
+                    <td>{{total | usd}}</td>
+                </tr>
+            </table>
+        {% endif %}
+{% endblock %}

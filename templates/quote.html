@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+
+{% block main %}
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="ticker" type="text" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+        <main class="container py-5 text-center">
+        {% if symbol  %}
+            <table class="table table-hover">
+                <tr>
+                    <th class="text-start">Name</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">Symbol</th>
+                </tr>
+                <tr>
+                    <td class="text-start">{{name}}</td>
+                    <td class="text-end">{{price | usd}}</td>
+                    <td class="text-end">{{symbol}}</td>
+                </tr>
+
+            </table>
+        {% endif %}
+        </main>
+{% endblock %}

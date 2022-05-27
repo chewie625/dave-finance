@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+
+{% block main %}
+    <main class="container py-5 text-center">
+        <table id="portfolio" class="table table-hover"  >
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th class="text-end">Quantity</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">Transaction Date</th>
+                    <th class="text-end">Transaction Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in portfolio %}
+                    <tr>
+                        <td>{{row.Ticker }}</td>
+                        <td class="text-end">{{row.Qty}}</td>
+                        <td class="text-end">{{row.Price|usd}}</td>
+                        <td class="text-end">{{row.Date}}</td>
+                        <td class="text-end">{{row.Time}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}
